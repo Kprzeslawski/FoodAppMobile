@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -44,8 +45,29 @@ public class FoodListElemComponent extends ConstraintLayout {
         countValue = (TextView)findViewById(R.id.countValue);
         buttonAddValue = (Button) findViewById(R.id.buttonAddValue);
         buttonDecreaseValue = (Button) findViewById(R.id.buttonDecreaseValue);
+
+        buttonAddValue.setOnClickListener(addButtonClickListener);
+        buttonDecreaseValue.setOnClickListener(decButtonClickListener);
     }
 
+    private OnClickListener addButtonClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String text = countValue.getText().toString();
+            int newTextAsInt = Integer.parseInt(text) + 1;
+            countValue.setText(String.valueOf(newTextAsInt));
+        }
+    };
+
+    private OnClickListener decButtonClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String text = countValue.getText().toString();
+            int newTextAsInt = Integer.parseInt(text) - 1;
+            if(newTextAsInt < 0)return;
+            countValue.setText(String.valueOf(newTextAsInt));
+        }
+    };
 
     @Override
     protected void onDraw(Canvas canvas) {
