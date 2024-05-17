@@ -27,7 +27,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <com.example.foodappmobile.components.FoodListElemComponent
+                style="@style/Widget.Theme.FoodAppMobile.MyView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:paddingBottom="40dp"
+                app:exampleDimension="24sp"
+                app:exampleString="Hello, FoodListElemComponent" />
+        </LinearLayout>
     </ScrollView>
 
     <Button
