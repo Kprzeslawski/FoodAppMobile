@@ -1,12 +1,17 @@
 package com.example.foodappmobile;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.foodappmobile.components.FoodListElemComponent;
+import com.example.foodappmobile.data.FoodRecordElem;
+import com.example.foodappmobile.data.FoodStaticData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,5 +25,15 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        for (FoodRecordElem rec : FoodStaticData.foodList) {
+
+        }
+
+        FoodListElemComponent foodListElemComponent = new FoodListElemComponent(this);
+        foodListElemComponent.setTitle("eeeee");
+
+        ((LinearLayout) findViewById(R.id.food_item_list_layout)).addView(foodListElemComponent);
+
     }
 }

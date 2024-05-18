@@ -78,14 +78,16 @@ public class FoodListElemComponent extends ConstraintLayout {
         }
     };
 
+    public CharSequence getTitle() {
+        return title.getText();
+    }
+
+    public void setTitle(String title) {
+        this.title.setText(title);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
     }
-
-    /**
-     * Gets the example string attribute value.
-     *
-     * @return The example string attribute value.
-     */
 }
