@@ -86,8 +86,17 @@ public class FoodListElemComponent extends ConstraintLayout {
         this.title.setText(title);
     }
 
+    public void setDescription(String description) {
+        this.content.setText(description);
+    }
+    public void setImageById(Integer imageId) {
+        this.recordImgView.setImageResource(imageId);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
     }
+
+
 }

@@ -27,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         for (FoodRecordElem rec : FoodStaticData.foodList) {
+            FoodListElemComponent foodListElemComponent = new FoodListElemComponent(this);
+            foodListElemComponent.setTitle(rec.getName());
+            foodListElemComponent.setDescription(rec.getDescription());
+            foodListElemComponent.setImageById(rec.getImage_id());
+
+            ((LinearLayout) findViewById(R.id.food_item_list_layout)).addView(foodListElemComponent);
 
         }
-
-        FoodListElemComponent foodListElemComponent = new FoodListElemComponent(this);
-        foodListElemComponent.setTitle("eeeee");
-
-        ((LinearLayout) findViewById(R.id.food_item_list_layout)).addView(foodListElemComponent);
 
     }
 }
