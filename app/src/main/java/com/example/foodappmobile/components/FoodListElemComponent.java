@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -17,6 +18,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.foodappmobile.R;
 
 public class FoodListElemComponent extends ConstraintLayout {
+
+    private ImageView recordImgView;
+    private TextView title;
+    private TextView content;
+
     private TextView countValue;
     private Button buttonAddValue;
     private Button buttonDecreaseValue;
@@ -42,9 +48,12 @@ public class FoodListElemComponent extends ConstraintLayout {
 
         inflater.inflate(R.layout.food_list_comp_temp, this);
 
-        countValue = (TextView)findViewById(R.id.countValue);
+        countValue = (TextView) findViewById(R.id.countValue);
         buttonAddValue = (Button) findViewById(R.id.buttonAddValue);
         buttonDecreaseValue = (Button) findViewById(R.id.buttonDecreaseValue);
+        recordImgView = (ImageView) findViewById(R.id.record_img);
+        title = (TextView) findViewById(R.id.record_title);
+        content = (TextView)  findViewById(R.id.record_text);
 
         buttonAddValue.setOnClickListener(addButtonClickListener);
         buttonDecreaseValue.setOnClickListener(decButtonClickListener);
