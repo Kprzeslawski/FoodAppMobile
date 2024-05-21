@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public View.OnClickListener mainButtonOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            setContentView(R.layout.summary_layout);
         }
     };
 }
