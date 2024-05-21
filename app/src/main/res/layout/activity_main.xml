@@ -29,19 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-<!--            <com.example.foodappmobile.components.FoodListElemComponent-->
-<!--                android:id="@+id/foodListElemComponent"-->
-<!--                android:background="@color/gray_400"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
-
-<!--            <com.example.foodappmobile.components.FoodListElemComponent-->
-<!--                android:id="@+id/foodListElemComponent2"-->
-<!--                android:background="@color/gray_400"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content" />-->
         </LinearLayout>
     </ScrollView>
 

@@ -1,6 +1,8 @@
 package com.example.foodappmobile;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -36,5 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        ((Button) findViewById(R.id.main_summary_button)).setOnClickListener(mainButtonOnClickListener);
     }
+
+    public View.OnClickListener mainButtonOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 }
