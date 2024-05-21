@@ -8,7 +8,7 @@
     tools:context=".activities.SummaryActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/summary_return_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,8 @@
         android:gravity="center"
         android:text="Summary"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/summary_return_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/summary_return_button"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
