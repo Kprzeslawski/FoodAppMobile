@@ -64,21 +64,16 @@ public class FoodListElemComponent extends ConstraintLayout {
     private OnClickListener addButtonClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            String text = countValue.getText().toString();
-            int newTextAsInt = Integer.parseInt(text) + 1;
-            countValue.setText(String.valueOf(newTextAsInt));
             elem.increaseCount();
+            countValue.setText(String.valueOf(elem.getCount()));
         }
     };
 
     private OnClickListener decButtonClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            String text = countValue.getText().toString();
-            int newTextAsInt = Integer.parseInt(text) - 1;
-            if(newTextAsInt < 0)return;
-            countValue.setText(String.valueOf(newTextAsInt));
             elem.decreaseCount();
+            countValue.setText(String.valueOf(elem.getCount()));
         }
     };
 
