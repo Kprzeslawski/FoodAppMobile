@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
             foodListElemComponent.setDescription(rec.getDescription());
             foodListElemComponent.setImageById(rec.getImage_id());
 
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0,10,0,0);
+
+            foodListElemComponent.setLayoutParams(lp);
+
             ((LinearLayout) findViewById(R.id.food_item_list_layout)).addView(foodListElemComponent);
 
         }
