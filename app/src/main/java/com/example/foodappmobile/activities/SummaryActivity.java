@@ -1,18 +1,21 @@
 package com.example.foodappmobile.activities;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.foodappmobile.R;
+import com.example.foodappmobile.data.FoodRecordElem;
+import com.example.foodappmobile.data.FoodStaticData;
 
 public class SummaryActivity extends AppCompatActivity {
 
@@ -21,7 +24,7 @@ public class SummaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_summary);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.summary_main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -33,5 +36,12 @@ public class SummaryActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        for (FoodRecordElem elem : FoodStaticData.foodList) {
+            TextView tv = new TextView(this);
+            tv.setText(String.valueOf(elem.getCount()));
+            ((LinearLayout) findViewById(R.id.add_rec_list)).addView(tv);
+        }
+
     }
 }
