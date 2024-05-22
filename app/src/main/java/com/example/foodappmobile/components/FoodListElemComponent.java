@@ -71,10 +71,6 @@ public class FoodListElemComponent extends ConstraintLayout {
         }
     };
 
-    public void setElem(FoodRecordElem elem) {
-        this.elem = elem;
-    }
-
     private OnClickListener decButtonClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -86,19 +82,12 @@ public class FoodListElemComponent extends ConstraintLayout {
         }
     };
 
-    public CharSequence getTitle() {
-        return title.getText();
-    }
-
-    public void setTitle(String title) {
-        this.title.setText(title);
-    }
-
-    public void setDescription(String description) {
-        this.content.setText(description);
-    }
-    public void setImageById(Integer imageId) {
-        this.recordImgView.setImageResource(imageId);
+    public void setElem(FoodRecordElem elem) {
+        this.elem = elem;
+        this.title.setText(elem.getName());
+        this.content.setText(elem.getDescription());
+        this.recordImgView.setImageResource(elem.getImage_id());
+        this.countValue.setText(String.valueOf(elem.getCount()));
     }
 
     @Override
