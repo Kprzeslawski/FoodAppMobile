@@ -16,8 +16,10 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.foodappmobile.R;
+import com.example.foodappmobile.data.FoodRecordElem;
 
 public class FoodListElemComponent extends ConstraintLayout {
+    private FoodRecordElem elem;
 
     private ImageView recordImgView;
     private TextView title;
@@ -65,8 +67,13 @@ public class FoodListElemComponent extends ConstraintLayout {
             String text = countValue.getText().toString();
             int newTextAsInt = Integer.parseInt(text) + 1;
             countValue.setText(String.valueOf(newTextAsInt));
+            elem.increaseCount();
         }
     };
+
+    public void setElem(FoodRecordElem elem) {
+        this.elem = elem;
+    }
 
     private OnClickListener decButtonClickListener = new OnClickListener() {
         @Override
@@ -75,6 +82,7 @@ public class FoodListElemComponent extends ConstraintLayout {
             int newTextAsInt = Integer.parseInt(text) - 1;
             if(newTextAsInt < 0)return;
             countValue.setText(String.valueOf(newTextAsInt));
+            elem.decreaseCount();
         }
     };
 

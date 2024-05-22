@@ -6,7 +6,7 @@ public class FoodRecordElem {
 
 private Integer count;
 
-    private String name;
+private String name;
 private String description;
 private Integer image_id;
 
@@ -37,11 +37,12 @@ private Integer image_id;
         return image_id;
     }
 
-    public Integer getCount() {
-        return count;
-    }
+    public Integer getCount() {return count;}
 
     public void setImage_id(Integer image_id) {
         this.image_id = image_id;
     }
+
+    public void increaseCount(){this.count++;}
+    public void decreaseCount(){if(this.count > 0)this.count--;}
 }
