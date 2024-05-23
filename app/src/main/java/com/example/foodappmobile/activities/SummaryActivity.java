@@ -94,6 +94,7 @@ public class SummaryActivity extends AppCompatActivity {
 
 
         TableRow summary = createTableRow(new String[]{"Total", "0", "0", "0", "0"});
+        summary.setBackgroundColor(Color.LTGRAY);
 
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams();
         layoutParams.span = 3;
