@@ -1,10 +1,15 @@
 package com.example.foodappmobile.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -61,11 +66,54 @@ public class SummaryActivity extends AppCompatActivity {
             return;
         }
 
-        for (FoodRecordElem elem : FoodStaticData.foodList) {
-            TextView tv = new TextView(this);
-            tv.setText(String.valueOf(elem.getCount()));
-            ((LinearLayout) findViewById(R.id.add_rec_list)).addView(tv);
-        }
+        createTable();
 
+    }
+    public void createTable(){
+
+        TableLayout tableLayout = new TableLayout(this);
+        tableLayout.setColumnStretchable(0,true);
+        tableLayout.setColumnStretchable(2,true);
+        tableLayout.setColumnStretchable(4,true);
+        tableLayout.setColumnStretchable(6,true);
+        tableLayout.setColumnStretchable(8,true);
+        tableLayout.setColumnStretchable(10,true);
+
+        tableLayout.addView(createBar(4));
+        TableRow header = createTableRow(new String[]{"Food Name", "Count", "Kcal", "Protein", "Carbs", "Fat"});
+        header.setBackgroundColor(Color.LTGRAY);
+        tableLayout.addView(header);
+
+        ((LinearLayout) findViewById(R.id.add_rec_list)).addView(tableLayout);
+    }
+
+    public TableRow createTableRow(String[] values){
+        TableRow res = new TableRow(this);
+
+        boolean first = true;
+
+        for (String s : values) {
+
+            if(!first){
+                View v = new View(this);
+                v.setBackgroundColor(Color.BLACK);
+                v.setLayoutParams(new TableRow.LayoutParams(4, ViewGroup.LayoutParams.MATCH_PARENT));
+                res.addView(v);
+            }else first = false;
+
+            TextView tv = new TextView(this);
+            tv.setText(s);
+            tv.setGravity(Gravity.CENTER);
+            res.addView(tv);
+
+        }
+        return res;
+    }
+
+    public View createBar(int h){
+        View v = new View(this);
+        v.setBackgroundColor(Color.BLACK);
+        v.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 4));
+        return v;
     }
 }
