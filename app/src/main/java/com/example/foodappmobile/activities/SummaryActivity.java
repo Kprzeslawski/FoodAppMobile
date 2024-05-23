@@ -1,6 +1,7 @@
 package com.example.foodappmobile.activities;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -16,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.foodappmobile.R;
 import com.example.foodappmobile.data.FoodRecordElem;
 import com.example.foodappmobile.data.FoodStaticData;
+
+import java.time.format.TextStyle;
 
 public class SummaryActivity extends AppCompatActivity {
 
@@ -36,6 +39,27 @@ public class SummaryActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        boolean any_elem = false;
+        for (FoodRecordElem elem : FoodStaticData.foodList)
+            if (elem.getCount() > 0) {
+                any_elem = true;
+                break;
+            }
+
+        if(!any_elem){
+            TextView tv = new TextView(this);
+            tv.setGravity(Gravity.CENTER);
+            tv.setTextSize(30);
+            tv.setText("No food selected");
+
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0,10,0,0);
+            tv.setLayoutParams(lp);
+
+            ((LinearLayout) findViewById(R.id.add_rec_list)).addView(tv);
+            return;
+        }
 
         for (FoodRecordElem elem : FoodStaticData.foodList) {
             TextView tv = new TextView(this);
