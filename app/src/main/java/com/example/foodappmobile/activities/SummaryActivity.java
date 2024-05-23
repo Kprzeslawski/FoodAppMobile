@@ -92,22 +92,12 @@ public class SummaryActivity extends AppCompatActivity {
                 tableLayout.addView(createTableRow(new String[]{elem.getName(), String.valueOf(elem.getCount()), "0", "0", "0", "0"}));
             }
 
-        TableRow summary = new TableRow(this);
 
-        TextView tv = new TextView(this);
-        tv.setText("Total");
-        tv.setGravity(Gravity.CENTER);
+        TableRow summary = createTableRow(new String[]{"Total", "0", "0", "0", "0"});
+
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams();
         layoutParams.span = 3;
-        tv.setLayoutParams(layoutParams);
-        summary.addView(tv);
-
-        View v = new View(this);
-        v.setBackgroundColor(Color.BLACK);
-        v.setLayoutParams(new TableRow.LayoutParams(4, ViewGroup.LayoutParams.MATCH_PARENT));
-        summary.addView(v);
-
-
+        summary.getChildAt(0).setLayoutParams(layoutParams);
 
         tableLayout.addView(createBar(4));
         tableLayout.addView(summary);
