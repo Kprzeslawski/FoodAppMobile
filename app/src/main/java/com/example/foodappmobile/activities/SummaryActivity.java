@@ -84,6 +84,13 @@ public class SummaryActivity extends AppCompatActivity {
         header.setBackgroundColor(Color.LTGRAY);
         tableLayout.addView(header);
 
+
+        for (FoodRecordElem elem : FoodStaticData.foodList)
+            if (elem.getCount() > 0) {
+                tableLayout.addView(createBar(4));
+                tableLayout.addView(createTableRow(new String[]{elem.getName(), String.valueOf(elem.getCount()), "0", "0", "0", "0"}));
+            }
+
         ((LinearLayout) findViewById(R.id.add_rec_list)).addView(tableLayout);
     }
 
