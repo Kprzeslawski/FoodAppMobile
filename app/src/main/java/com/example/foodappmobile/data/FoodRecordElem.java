@@ -1,6 +1,7 @@
 package com.example.foodappmobile.data;
 
 
+import kotlin.ParameterName;
 
 public class FoodRecordElem {
 
