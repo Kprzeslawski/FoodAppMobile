@@ -85,15 +85,26 @@ public class SummaryActivity extends AppCompatActivity {
         header.setBackgroundColor(Color.LTGRAY);
         tableLayout.addView(header);
 
+        double[] total = new double[]{0.,0.,0.,0.};
 
         for (FoodRecordElem elem : FoodStaticData.foodList)
             if (elem.getCount() > 0) {
+                int multiply = elem.getCount();
+                total[0] += elem.getKcal() * multiply;
+                total[1] += elem.getProtein() * multiply;
+                total[2] += elem.getCarbs() * multiply;
+                total[3] += elem.getFat() * multiply;
+
                 tableLayout.addView(createBar(4));
-                tableLayout.addView(createTableRow(new String[]{elem.getName(), String.valueOf(elem.getCount()), "0", "0", "0", "0"}));
+                tableLayout.addView(createTableRow(new String[]{elem.getName(), String.valueOf(elem.getCount()),
+                        String.valueOf(elem.getKcal() * multiply), String.valueOf(elem.getProtein() * multiply),
+                        String.valueOf(elem.getCarbs() * multiply), String.valueOf(elem.getFat() * multiply)}));
             }
 
 
-        TableRow summary = createTableRow(new String[]{"Total", "0", "0", "0", "0"});
+        TableRow summary = createTableRow(new String[]{"Total",
+                String.valueOf(total[0]), String.valueOf(total[1]),
+                String.valueOf(total[2]), String.valueOf(total[3])});
         summary.setBackgroundColor(Color.LTGRAY);
 
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams();
