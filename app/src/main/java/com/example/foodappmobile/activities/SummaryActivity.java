@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,11 +20,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.chart.common.listener.Event;
+import com.anychart.chart.common.listener.ListenersInterface;
+import com.anychart.charts.Pie;
+import com.anychart.enums.Align;
+import com.anychart.enums.LegendLayout;
 import com.example.foodappmobile.R;
 import com.example.foodappmobile.data.FoodRecordElem;
 import com.example.foodappmobile.data.FoodStaticData;
 
 import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SummaryActivity extends AppCompatActivity {
 
@@ -68,6 +80,48 @@ public class SummaryActivity extends AppCompatActivity {
 
         createTable();
 
+        createPieChartWithAllFoodsSelected();
+
+    }
+
+    public void createPieChartWithAllFoodsSelected(){
+        AnyChartView anyChartView = new AnyChartView(this);
+
+        Pie pie = AnyChart.pie();
+
+        pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
+            @Override
+            public void onClick(Event event) {
+            }
+        });
+
+        List<DataEntry> data = new ArrayList<>();
+        data.add(new ValueDataEntry("Apples", 6371664));
+        data.add(new ValueDataEntry("Pears", 789622));
+        data.add(new ValueDataEntry("Bananas", 7216301));
+        data.add(new ValueDataEntry("Grapes", 1486621));
+        data.add(new ValueDataEntry("Oranges", 1200000));
+
+        pie.data(data);
+
+        pie.title("Fruits imported in 2015 (in kg)");
+
+        pie.labels().position("outside");
+
+        pie.legend().title().enabled(true);
+        pie.legend().title()
+                .text("Retail channels")
+                .padding(0d, 0d, 10d, 0d);
+
+        pie.legend()
+                .position("center-bottom")
+                .itemsLayout(LegendLayout.HORIZONTAL)
+                .align(Align.CENTER);
+
+        anyChartView.setChart(pie);
+
+
+        ((LinearLayout) findViewById(R.id.add_rec_list)).addView(anyChartView);
     }
     public void createTable(){
 
