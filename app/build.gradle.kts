@@ -40,4 +40,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    compileOnly("com.github.AnyChart:AnyChart-Android:1.1.5")
 }
