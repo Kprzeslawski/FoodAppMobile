@@ -3,7 +3,6 @@ package com.example.foodappmobile.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -11,11 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -33,7 +30,6 @@ import com.example.foodappmobile.R;
 import com.example.foodappmobile.data.FoodRecordElem;
 import com.example.foodappmobile.data.FoodStaticData;
 
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,22 +74,18 @@ public class SummaryActivity extends AppCompatActivity {
             return;
         }
 
-        createTable();
+//        createTable();
 
         createPieChartWithAllFoodsSelected();
 
     }
 
     public void createPieChartWithAllFoodsSelected(){
-        AnyChartView anyChartView = new AnyChartView(this);
+        AnyChartView anyChartView = findViewById(R.id.any_chart_view);
+        anyChartView.setMinimumWidth(200);
+        anyChartView.setMinimumHeight(200);
 
         Pie pie = AnyChart.pie();
-
-        pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
-            @Override
-            public void onClick(Event event) {
-            }
-        });
 
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("Apples", 6371664));
@@ -103,7 +95,6 @@ public class SummaryActivity extends AppCompatActivity {
         data.add(new ValueDataEntry("Oranges", 1200000));
 
         pie.data(data);
-
         pie.title("Fruits imported in 2015 (in kg)");
 
         pie.labels().position("outside");
@@ -120,8 +111,6 @@ public class SummaryActivity extends AppCompatActivity {
 
         anyChartView.setChart(pie);
 
-
-        ((LinearLayout) findViewById(R.id.add_rec_list)).addView(anyChartView);
     }
     public void createTable(){
 
